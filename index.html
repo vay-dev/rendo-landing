@@ -174,6 +174,13 @@ section { padding-block: clamp(64px, 9vw, 112px); }
 
 /* Monthly band */
 .monthly { padding-block: 0; }
+.agents { background: var(--mist); }
+.agents__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.agents__grid > div { display: grid; gap: 18px; justify-items: start; }
+.agents__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.agents__list li { background: var(--surface); border-radius: var(--r-card); box-shadow: var(--e1); padding: 18px 20px; display: grid; gap: 4px; }
+.agents__list b { font: 600 17px/1.3 var(--display); }
+.agents__list span { color: var(--muted); font-size: 15px; }
 .monthly__band { background: var(--ember-50); border-radius: var(--r-sheet); padding: clamp(24px, 4vw, 40px); display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
 .monthly__band h2 { font-size: clamp(24px, 3vw, 32px); color: var(--ink); }
 .monthly__band p { color: var(--ink-2); margin-top: 10px; max-width: 62ch; }
@@ -257,7 +264,7 @@ html.lenis, html.lenis body { height: auto; }
 
 /* Narrow screens */
 @media (max-width: 980px) {
-  .hero__grid, .money__grid, .owners__grid, .faq__grid { grid-template-columns: 1fr; }
+  .hero__grid, .money__grid, .owners__grid, .faq__grid, .agents__grid { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr; gap: 0; }
   .step { padding: 0 0 28px 56px; }
   .steps-track { top: 18px; bottom: 46px; left: 17px; right: auto; width: 2px; height: auto; }
@@ -298,6 +305,7 @@ html.lenis, html.lenis body { height: auto; }
       <a href="#how">How it works</a>
       <a href="#money">What you pay</a>
       <a href="#landlords">For landlords</a>
+      <a href="agents.html">For agents</a>
       <a href="#faq">Questions</a>
     </nav>
     <div class="header__auth">
@@ -309,7 +317,7 @@ html.lenis, html.lenis body { height: auto; }
     </div>
   </div>
   <nav class="wrap mobile-nav" id="mobile-nav" aria-label="Mobile">
-    <a href="#how">How it works</a><a href="#money">What you pay</a><a href="#landlords">For landlords</a><a href="#faq">Questions</a><a href="#find">Find a home</a>
+    <a href="#how">How it works</a><a href="#money">What you pay</a><a href="#landlords">For landlords</a><a href="agents.html">For agents</a><a href="#faq">Questions</a><a href="#find">Find a home</a>
   </nav>
 </header>
 
@@ -352,9 +360,10 @@ html.lenis, html.lenis body { height: auto; }
           <div class="card-pay__rows">
             <div class="row"><span>Rent, one year</span><span>₦2,400,000</span></div>
             <div class="row"><span>Legal fee</span><span>₦120,000</span></div>
+            <div class="row"><span>Agency fee</span><span>₦120,000</span></div>
             <div class="row"><span>Caution, refundable</span><span>₦300,000</span></div>
             <div class="row row--credit"><span>Viewing deposit you paid</span><span>−₦240,000</span></div>
-            <div class="row card-pay__total"><span>Total</span><span>₦2,580,000</span></div>
+            <div class="row card-pay__total"><span>Total</span><span>₦2,700,000</span></div>
           </div>
           <p class="card-pay__note"><svg width="15" height="15"><use href="#i-lock"/></svg>Held by Rendo until your handover. The landlord is paid once you have the keys.</p>
         </aside>
@@ -486,6 +495,23 @@ html.lenis, html.lenis body { height: auto; }
     </div>
   </section>
 
+  <!-- 5b. Agents -->
+  <section class="agents" id="agents">
+    <div class="wrap agents__grid">
+      <div>
+        <span class="eyebrow">For agents</span>
+        <h2>The agents who show the homes are why Rendo works.</h2>
+        <p class="lede">Rendo takes the chasing out of your job: your fee sits inside the renter's move-in payment, renters are vetted and show up, and the paperwork is handled.</p>
+        <a class="btn btn--primary" href="agents.html">See how Rendo works for agents</a>
+      </div>
+      <ul class="agents__list">
+        <li><b>Your fee is in the payment</b><span>Shown to the renter before they pay, and released when the handover is complete. No chasing the landlord afterwards.</span></li>
+        <li><b>Renters who show up</b><span>A viewing deposit and a Vetted badge, with missed viewings counted, so you spend your day on serious renters.</span></li>
+        <li><b>One place for the whole deal</b><span>Leads, viewings, offers, the agreement and your earnings, without a spreadsheet.</span></li>
+      </ul>
+    </div>
+  </section>
+
   <!-- 6. Pay monthly -->
   <section class="monthly">
     <div class="wrap">
@@ -538,7 +564,7 @@ html.lenis, html.lenis body { height: auto; }
   <div class="wrap footer__inner">
     <span>© 2026 Rendo</span>
     <nav class="footer__links" aria-label="Footer">
-      <a href="#about">About us</a><a href="#services">Services</a><a href="#help">Help centre</a><a href="#terms">Terms</a><a href="#privacy">Privacy</a>
+      <a href="agents.html">For agents</a><a href="#about">About us</a><a href="#services">Services</a><a href="#help">Help centre</a><a href="#terms">Terms</a><a href="#privacy">Privacy</a>
     </nav>
   </div>
 </footer>
@@ -594,7 +620,7 @@ html.lenis, html.lenis body { height: auto; }
   });
 
   // The menu shows where you are
-  ['how', 'money', 'landlords', 'faq'].forEach(function (id) {
+  ['how', 'money', 'landlords', 'agents', 'faq'].forEach(function (id) {
     var link = document.querySelector('.nav a[href="#' + id + '"]');
     var section = document.getElementById(id);
     if (!link || !section) return;
@@ -673,6 +699,7 @@ html.lenis, html.lenis body { height: auto; }
   document.querySelectorAll('.section-head').forEach(function (h) { reveal(h.children, h); });
   reveal('.pain', '.pains', { stagger: .15 });
   reveal('.point', '.money__points', { x: -16, y: 0 });
+  reveal('.agents__list li', '.agents__list', { x: 16, y: 0 });
   reveal('.owner-list li', '.owner-list', { x: -16, y: 0 });
   reveal('.member', '.team', { y: 18 });
   reveal('.monthly__band', '.monthly', { y: 24 });
